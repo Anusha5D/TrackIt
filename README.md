@@ -27,7 +27,6 @@ PostgreSQL
 - JWT auth via `Authorization: Bearer <token>`, verified in `protect` middleware before any application route runs.
 - Google sign-in links to an existing account by matching `googleId` OR `email` — no duplicate accounts.
 - Dashboard stats (`GET /api/applications/stats`) are aggregated in SQL (`GROUP BY`/`COUNT`), not computed client-side.
-- Models serialize `id` as `_id` to keep the API shape stable (a holdover from an earlier MongoDB version).
 
 ## Setup
 
