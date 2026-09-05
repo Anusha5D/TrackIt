@@ -27,7 +27,7 @@ const Navbar = () => {
           <div className="flex items-center gap-6">
             <Link to="/" className="flex items-center gap-2 text-xl font-bold text-primary-600 dark:text-primary-400">
               <Briefcase size={24} />
-              TrackR
+              TrackIt
             </Link>
 
             {user && (

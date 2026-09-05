@@ -34,7 +34,7 @@ const Login = () => {
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 text-3xl font-bold text-primary-600">
             <Briefcase size={32} />
-            TrackR
+            TrackIt
           </div>
           <p className="text-gray-600 mt-2">Welcome back</p>
         </div>

@@ -1,11 +1,22 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { useTheme } from '../context/ThemeContext';
 
+
 const formatWeekLabel = (year, week) => {
   const jan1 = new Date(year, 0, 1);
   const daysOffset = (week - 1) * 7;
   const weekStart = new Date(year, 0, 1 + daysOffset - jan1.getDay());
-  return weekStart.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  const weekEnd = new Date(weekStart);
+  weekEnd.setDate(weekEnd.getDate() + 6);
+
+  const sameMonth = weekStart.getMonth() === weekEnd.getMonth();
+  const startStr = weekStart.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  const endStr = weekEnd.toLocaleDateString(
+    'en-US',
+    sameMonth ? { day: 'numeric' } : { month: 'short', day: 'numeric' }
+  );
+
+  return `${startStr} – ${endStr}`;
 };
 
 const WeeklyApplicationsChart = ({ weeklyData = [] }) => {

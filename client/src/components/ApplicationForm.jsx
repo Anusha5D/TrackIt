@@ -30,6 +30,10 @@ const ApplicationForm = ({ open, application, onSubmit, onClose }) => {
           jobLink: application.jobLink || '',
           contactPerson: application.contactPerson || '',
           contactEmail: application.contactEmail || '',
+          nextStep: application.nextStep || '',
+          nextStepDate: application.nextStepDate
+            ? new Date(application.nextStepDate).toISOString().split('T')[0]
+            : '',
           notes: application.notes || '',
         });
       } else {
@@ -45,6 +49,8 @@ const ApplicationForm = ({ open, application, onSubmit, onClose }) => {
           jobLink: '',
           contactPerson: '',
           contactEmail: '',
+          nextStep: '',
+          nextStepDate: '',
           notes: '',
         });
       }
@@ -148,22 +154,22 @@ const ApplicationForm = ({ open, application, onSubmit, onClose }) => {
             </div>
 
             <div>
-              <label className={labelClass}>Salary Min ($)</label>
+              <label className={labelClass}>Salary Min (₹)</label>
               <input
                 type="number"
                 {...register('salaryMin')}
                 className={inputClass}
-                placeholder="150000"
+                placeholder="800000"
               />
             </div>
 
             <div>
-              <label className={labelClass}>Salary Max ($)</label>
+              <label className={labelClass}>Salary Max (₹)</label>
               <input
                 type="number"
                 {...register('salaryMax')}
                 className={inputClass}
-                placeholder="200000"
+                placeholder="1200000"
               />
             </div>
 
@@ -184,6 +190,22 @@ const ApplicationForm = ({ open, application, onSubmit, onClose }) => {
                 className={inputClass}
                 placeholder="recruiter@company.com"
               />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className={labelClass}>Next Step</label>
+              <input
+                {...register('nextStep')}
+                className={inputClass}
+                placeholder="Follow up with recruiter / Prep for onsite"
+              />
+            </div>
+
+            <div>
+              <label className={labelClass}>Next Step Date</label>
+              <input type="date" {...register('nextStepDate')} className={inputClass} />
             </div>
           </div>
 

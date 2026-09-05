@@ -1,7 +1,7 @@
 {
-  "name": "trackr-server",
+  "name": "trackit-server",
   "version": "1.0.0",
-  "description": "TrackR job tracker API",
+  "description": "TrackIt job tracker API",
   "main": "server.js",
   "engines": {
     "node": ">=18.0.0"

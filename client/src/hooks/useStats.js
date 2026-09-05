@@ -1,6 +1,30 @@
 import { useState, useEffect, useCallback } from 'react';
 import applicationsApi from '../api/applicationsApi';
 
+const toDateKey = (dateValue) => {
+  const date = new Date(dateValue);
+  if (Number.isNaN(date.getTime())) return null;
+
+  return [date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate()]
+    .map((part) => String(part).padStart(2, '0'))
+    .join('-');
+};
+
+const getTodayKey = () => {
+  const today = new Date();
+  return [today.getFullYear(), today.getMonth() + 1, today.getDate()]
+    .map((part) => String(part).padStart(2, '0'))
+    .join('-');
+};
+
+const addDaysToKey = (dateKey, days) => {
+  const date = new Date(`${dateKey}T00:00:00`);
+  date.setDate(date.getDate() + days);
+  return [date.getFullYear(), date.getMonth() + 1, date.getDate()]
+    .map((part) => String(part).padStart(2, '0'))
+    .join('-');
+};
+
 export const useStats = () => {
   const [stats, setStats] = useState(null);
   const [recentApps, setRecentApps] = useState([]);
@@ -25,17 +49,18 @@ export const useStats = () => {
       setRecentApps(recentData.applications);
 
       // Client-side filter for upcoming next steps (next 30 days)
-      const now = new Date();
-      const cutoff = new Date();
-      cutoff.setDate(cutoff.getDate() + 30);
+      // Compare against the start of today so items due "today" aren't excluded
+      // just because the current time-of-day is later than midnight.
+      const todayKey = getTodayKey();
+      const cutoffKey = addDaysToKey(todayKey, 30);
 
       const upcoming = upcomingData.applications
         .filter((app) => {
           if (!app.nextStepDate) return false;
-          const d = new Date(app.nextStepDate);
-          return d >= now && d <= cutoff;
+          const dateKey = toDateKey(app.nextStepDate);
+          return dateKey && dateKey >= todayKey && dateKey <= cutoffKey;
         })
-        .sort((a, b) => new Date(a.nextStepDate) - new Date(b.nextStepDate))
+        .sort((a, b) => toDateKey(a.nextStepDate).localeCompare(toDateKey(b.nextStepDate)))
         .slice(0, 5);
 
       setUpcomingSteps(upcoming);

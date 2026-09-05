@@ -4,9 +4,12 @@ import StatusBadge from './StatusBadge';
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
+  const dateKey = [date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate()]
+    .map((part) => String(part).padStart(2, '0'))
+    .join('-');
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  const target = new Date(date);
+  const target = new Date(`${dateKey}T00:00:00`);
   target.setHours(0, 0, 0, 0);
 
   const diff = Math.round((target - today) / (1000 * 60 * 60 * 24));

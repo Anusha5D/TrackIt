@@ -39,8 +39,8 @@ export const applicationsToCSV = (applications) => {
     'Date Applied',
     'Job Type',
     'Location',
-    'Salary Min',
-    'Salary Max',
+    'Salary Min (₹)',
+    'Salary Max (₹)',
     'Contact Person',
     'Contact Email',
     'Job Link',
@@ -99,9 +99,9 @@ export const downloadCSV = (filename, csvContent) => {
 };
 
 /**
- * Convenience: build a timestamped filename like "trackr-export-2026-05-29.csv"
+ * Convenience: build a timestamped filename like "trackit-export-2026-05-29.csv"
  */
 export const buildCSVFilename = () => {
   const date = new Date().toISOString().split('T')[0];
-  return `trackr-export-${date}.csv`;
+  return `trackit-export-${date}.csv`;
 };

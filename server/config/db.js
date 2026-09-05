@@ -1,7 +1,7 @@
 require('dotenv').config(); // ensure env vars are loaded even if this file is required before server.js's dotenv.config()
 const { Sequelize } = require('sequelize');
 
-// DATABASE_URL example: postgresql://user:password@localhost:5432/trackr
+// DATABASE_URL example: postgresql://user:password@localhost:5432/trackit
 // Managed providers (Neon, Supabase, Render Postgres, etc.) require SSL on every
 // connection — including from local dev — so we detect that from the URL itself
 // rather than from NODE_ENV, which would otherwise only enable SSL in production

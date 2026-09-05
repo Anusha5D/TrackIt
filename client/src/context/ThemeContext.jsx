@@ -4,7 +4,7 @@ const ThemeContext = createContext(null);
 
 const getInitialTheme = () => {
   // 1. Check localStorage (user explicitly chose before)
-  const stored = localStorage.getItem('trackr_theme');
+  const stored = localStorage.getItem('trackit_theme');
   if (stored === 'light' || stored === 'dark') return stored;
 
   // 2. Fall back to OS preference
@@ -28,7 +28,7 @@ export const ThemeProvider = ({ children }) => {
       root.classList.remove('dark');
     }
 
-    localStorage.setItem('trackr_theme', theme);
+    localStorage.setItem('trackit_theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {

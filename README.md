@@ -1,4 +1,4 @@
-# TrackR
+# TrackIt
 
 A full-stack job application tracker — track applications, statuses, and follow-ups, with a dashboard for response rate and weekly volume.
 
@@ -40,7 +40,7 @@ cd client && npm install && npm run dev   # localhost:5173
 
 **`server/.env`**
 ```
-DATABASE_URL=postgresql://<user>:<password>@<host>:5432/trackr
+DATABASE_URL=postgresql://<user>:<password>@<host>:5432/trackit
 JWT_SECRET=<random string>
 JWT_EXPIRES_IN=7d
 PORT=5000

@@ -41,7 +41,7 @@ app.get('/api/health', (req, res) => {
 
 // Root route — useful for confirming the API is alive and for Render's health checks
 app.get('/', (req, res) => {
-  res.json({ name: 'TrackR API', status: 'running', version: '1.0.0' });
+  res.json({ name: 'TrackIt API', status: 'running', version: '1.0.0' });
 });
 
 // 404 handler — must come AFTER all routes

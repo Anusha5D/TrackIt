@@ -10,7 +10,7 @@ const axiosClient = axios.create({
 // Request interceptor: attach JWT to every request automatically
 axiosClient.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('trackr_token');
+    const token = localStorage.getItem('trackit_token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -25,7 +25,7 @@ axiosClient.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       // Token is bad — clear it and force re-login
-      localStorage.removeItem('trackr_token');
+      localStorage.removeItem('trackit_token');
       // Only redirect if not already on auth pages
       if (!window.location.pathname.match(/\/(login|signup)/)) {
         window.location.href = '/login';

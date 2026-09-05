@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const checkAuth = async () => {
-      const token = localStorage.getItem('trackr_token');
+      const token = localStorage.getItem('trackit_token');
       if (!token) {
         setLoading(false);
         return;
@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     const res = await axiosClient.post('/auth/login', { email, password });
     const { token, user } = res.data;
-    localStorage.setItem('trackr_token', token);
+    localStorage.setItem('trackit_token', token);
     setUser(user);
     return user;
   };
@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }) => {
   const signup = async (name, email, password) => {
     const res = await axiosClient.post('/auth/signup', { name, email, password });
     const { token, user } = res.data;
-    localStorage.setItem('trackr_token', token);
+    localStorage.setItem('trackit_token', token);
     setUser(user);
     return user;
   };
@@ -49,13 +49,13 @@ export const AuthProvider = ({ children }) => {
   const loginWithGoogle = async (credential) => {
     const res = await axiosClient.post('/auth/google', { credential });
     const { token, user } = res.data;
-    localStorage.setItem('trackr_token', token);
+    localStorage.setItem('trackit_token', token);
     setUser(user);
     return user;
   };
 
   const logout = () => {
-    localStorage.removeItem('trackr_token');
+    localStorage.removeItem('trackit_token');
     setUser(null);
   };
 

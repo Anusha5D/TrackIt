@@ -34,7 +34,7 @@ const Signup = () => {
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 text-3xl font-bold text-primary-600 dark:text-primary-400">
             <Briefcase size={32} />
-            TrackR
+            TrackIt
           </div>
           <p className="text-gray-600 dark:text-gray-400 mt-2">Track every application that matters</p>
         </div>

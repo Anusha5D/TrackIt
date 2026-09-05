@@ -12,7 +12,13 @@ const formatDate = (dateString) => {
 
 const formatSalary = (min, max) => {
   if (!min && !max) return null;
-  const fmt = (n) => `$${(n / 1000).toFixed(0)}k`;
+  const fmt = (n) => {
+    if (n >= 100000) {
+      const lakhs = n / 100000;
+      return `₹${lakhs % 1 === 0 ? lakhs.toFixed(0) : lakhs.toFixed(1)}L`;
+    }
+    return `₹${n.toLocaleString('en-IN')}`;
+  };
   if (min && max) return `${fmt(min)} – ${fmt(max)}`;
   return fmt(min || max);
 };
