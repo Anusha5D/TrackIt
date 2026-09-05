@@ -65,3 +65,8 @@ VITE_GOOGLE_CLIENT_ID=<same client ID as backend>
 | GET/PUT/DELETE | `/api/applications/:id` | Read / update / delete one |
 | GET | `/api/applications/stats` | Dashboard aggregates |
 
+## Website
+<img width="1341" height="636" alt="image" src="https://github.com/user-attachments/assets/434d5763-2ae0-4043-b134-cc49fdf90377" />
+
+<img width="1311" height="630" alt="image" src="https://github.com/user-attachments/assets/fe107fe2-8dbe-43ad-ad9b-bd56974eda34" />
+
